@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Are You Pretty?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 100px;
+      background-color: #fdf0f5;
+    }
+
+    .question {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffb6c1;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff99aa;
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #ff3399;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="question" id="question">Are you pretty?</div>
+  <div class="buttons" id="buttons">
+    <button onclick="handleYes()">Yes</button>
+    <button onclick="handleNo()">No</button>
+  </div>
+  <div class="message" id="message"></div>
+
+  <script>
+    let noResponses = [
+      "But I think you are pretty tho? Do you think the same?",
+      "Come onnn~ Don't be shy. You're really pretty, you know?",
+      "Awhhh~ really baby? Yk  You are pretty like the moon?",
+      "Well hehe, ofcourse! moon isn't really pretty as it has spots! so are you pretty like the flowers?",
+      "Well yk, ugly flowers exist ;-; so you are right!! that aside, I think you are as pretty as my love for you!! <3 am I correct? pwease don't say no ^-^ ",
+      "Maybe my love isn't that pretty afterall... but heyy!! maybe you misclicked, would you like to take your statement back? pweaseeeeee?",
+      "....I am sawd, can't believe my eyes :(    umm maybe you misclicked again?",
+      "You're breaking my heart with every 'No' :(",
+      "Okay, now you're just making me sad..",
+      "Refresh this website and click yes pweaseeeeeee~~",
+    ];
+
+    let state = 0;
+
+    function handleYes() {
+      document.getElementById("message").innerText = "Hehe~ good to know you know it, because you are <3";
+      document.getElementById("buttons").style.display = "none";
+      document.getElementById("question").innerText = "";
+    }
+
+    function handleNo() {
+      const q = document.getElementById("question");
+      const b = document.getElementById("buttons");
+      const m = document.getElementById("message");
+
+      if (state < noResponses.length) {
+        q.innerText = noResponses[state];
+        state++;
+      } else {
+        q.innerText = "Refresh this website and click yes pweaseeeeeee pweaseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+      }
+
+      b.innerHTML = `
+        <button onclick="handleYes()">Yes</button>
+        <button onclick="handleNo()">No</button>
+      `;
+
+      m.innerText = "";
+    }
+  </script>
+
+</body>
+</html>
